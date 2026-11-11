@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chapter 1 — Chemical Measurements | Comprehensive Exam</title>
+
+<style>
+:root {
+  --bg:#f3f5f9;
+  --card:#ffffff;
+  --text:#202938;
+  --muted:#687386;
+  --primary:#3157a4;
+  --primary-light:#e8eefc;
+  --green:#16834b;
+  --green-bg:#e6f6ed;
+  --red:#c73535;
+  --red-bg:#fff0ef;
+  --border:#dce2ec;
+  --shadow:0 8px 28px rgba(30,45,75,.08);
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
+  line-height:1.65;
+}
+header{
+  background:linear-gradient(135deg,#172e59,#3157a4);
+  color:white;
+  padding:30px 18px;
+  text-align:center;
+}
+header h1{margin:0;font-size:clamp(23px,4vw,34px)}
+header p{margin:8px 0 0;color:#dce7ff}
+.container{max-width:950px;margin:24px auto;padding:0 14px}
+.panel,.question-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:15px;
+  padding:20px;
+  margin-bottom:18px;
+  box-shadow:var(--shadow);
+}
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  text-align:center;
+}
+.stat{
+  background:var(--primary-light);
+  border-radius:12px;
+  padding:12px 5px;
+}
+.stat strong{display:block;font-size:22px;color:var(--primary)}
+.stat span{font-size:12px;color:var(--muted)}
+.progress-track{
+  height:10px;background:#e5e9f1;border-radius:20px;
+  overflow:hidden;margin-top:16px;
+}
+.progress-bar{
+  height:100%;width:0;background:var(--primary);
+  transition:width .25s;
+}
+.topline{
+  display:flex;justify-content:space-between;
+  gap:10px;flex-wrap:wrap;color:var(--muted);
+  font-size:13px;margin-bottom:12px;
+}
+.question-number{color:var(--primary);font-weight:bold}
+.question-text{
+  font-size:18px;font-weight:700;margin:12px 0 18px;
+  white-space:pre-wrap;
+}
+.options{display:grid;gap:10px}
+.option{
+  border:1px solid var(--border);
+  border-radius:10px;padding:12px 14px;
+  cursor:pointer;background:white;
+  display:flex;gap:10px;align-items:flex-start;
+  transition:.15s;
+}
+.option:hover{border-color:var(--primary);background:#f7f9ff}
+.option input{margin-top:5px;accent-color:var(--primary)}
+.option.correct{border-color:var(--green);background:var(--green-bg)}
+.option.wrong{border-color:var(--red);background:var(--red-bg)}
+.option.disabled{cursor:default}
+.action-row{
+  display:flex;gap:10px;flex-wrap:wrap;margin-top:20px;
+}
+button{
+  border:0;border-radius:10px;padding:12px 20px;
+  font-size:15px;font-weight:bold;cursor:pointer;
+}
+.primary-btn{background:var(--primary);color:white}
+.secondary-btn{background:#e9edf5;color:#28364e}
+button:disabled{opacity:.45;cursor:not-allowed}
+.feedback{
+  display:none;margin-top:18px;padding:16px;
+  border-radius:11px;white-space:pre-wrap;
+}
+.feedback.correct{display:block;background:var(--green-bg);border:1px solid #a8dfbd}
+.feedback.wrong{display:block;background:var(--red-bg);border:1px solid #f0b6b2}
+.feedback strong{display:block;margin-bottom:6px}
+.explanation{margin-top:8px}
+.question-input{
+  width:100%;padding:13px;border:1px solid var(--border);
+  border-radius:9px;font-size:16px;
+}
+select.question-input{background:white}
+.section-title{
+  color:var(--primary);font-size:14px;font-weight:bold;
+  text-transform:uppercase;letter-spacing:.5px;
+}
+#startScreen{text-align:center}
+#examScreen{display:none}
+#resultScreen{display:none;text-align:center}
+.score-big{font-size:48px;font-weight:bold;color:var(--primary)}
+.review-item{
+  border-bottom:1px solid var(--border);padding:14px 0;text-align:left;
+}
+.review-item:last-child{border:0}
+.muted{color:var(--muted)}
+@media(max-width:520px){
+  .panel,.question-card{padding:15px}
+  .stats{gap:6px}
+  .stat strong{font-size:19px}
+  .question-text{font-size:16px}
+}
+</style>
+</head>
+
+<body>
+<header>
+  <h1>Chapter 1: Chemical Measurements</h1>
+  <p>Comprehensive Examination — 120 Questions</p>
+</header>
+
+<div class="container">
+
+  <section id="startScreen" class="panel">
+    <h2>Comprehensive Examination</h2>
+    <p>This examination covers chemical concentrations, preparing solutions,
+    SI units, unit conversions, calculations, and titration.</p>
+    <div class="stats">
+      <div class="stat"><strong>120</strong><span>Total Questions</span></div>
+      <div class="stat"><strong>5</strong><span>Exam Parts</span></div>
+      <div class="stat"><strong>100%</strong><span>Instant Feedback</span></div>
+    </div>
+    <p class="muted">Select an answer and submit it to receive immediate feedback.
+    Incorrect answers include the correct answer and an explanation.</p>
+    <button class="primary-btn" onclick="startExam()">Start Examination</button>
+  </section>
+
+  <section id="examScreen">
+    <div class="panel">
+      <div class="stats">
+        <div class="stat"><strong id="currentStat">1 / 120</strong><span>Question</span></div>
+        <div class="stat"><strong id="scoreStat">0</strong><span>Correct Answers</span></div>
+        <div class="stat"><strong id="percentStat">0%</strong><span>Progress</span></div>
+      </div>
+      <div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
+    </div>
+
+    <div class="question-card">
+      <div class="topline">
+        <span id="partLabel" class="section-title"></span>
+        <span id="questionLabel" class="question-number"></span>
+      </div>
+      <div id="questionText" class="question-text"></div>
+      <div id="answerArea"></div>
+      <div id="feedback" class="feedback"></div>
+      <div class="action-row">
+        <button id="submitBtn" class="primary-btn" onclick="submitAnswer()">Submit Answer</button>
+        <button id="nextBtn" class="secondary-btn" onclick="nextQuestion()" disabled>Next Question →</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="resultScreen" class="panel">
+    <h2>Examination Completed</h2>
+    <div class="score-big" id="finalScore"></div>
+    <p id="finalMessage"></p>
+    <div id="reviewArea"></div>
+    <button class="primary-btn" onclick="restartExam()">Restart Examination</button>
+  </section>
+
+</div>
+
+<script>
+/*
+  QUESTION FORMAT:
+  type: "mcq" = multiple choice
+  type: "tf" = true or false
+  type: "match" = matching
+  type: "text" = written answer
+
+  The second part will continue the questions array
+  and complete the JavaScript engine.
+*/
+
+const questions = [
+
+/* =========================
+   PART I — MULTIPLE CHOICE
+   QUESTIONS 1–24
+========================= */
+
+{
+n:1,part:"Part I — Multiple Choice",type:"mcq",
+q:"Solutions are defined as:",
+o:[
+"A. Pure substances.",
+"B. Homogeneous mixtures of two or more pure substances.",
+"C. Solutes present in greatest abundance.",
+"D. A standard reagent whose concentration is known."
+],
+a:1,
+e:"A solution is a homogeneous mixture of two or more pure substances."
+},
+{
+n:2,part:"Part I — Multiple Choice",type:"mcq",
+q:"The substance present in greatest abundance is the:",
+o:["A. Analyte.","B. Solute.","C. Solvent.","D. Titrant."],
+a:2,
+e:"The solvent is the component present in the greatest abundance."
+},
+{
+n:3,part:"Part I — Multiple Choice",type:"mcq",
+q:"The concentration of a solution is the:",
+o:[
+"A. Amount of solute present in a given quantity of solvent or solution.",
+"B. Mass of solvent per liter of solution.",
+"C. Volume of solute per kilogram of solvent.",
+"D. Number of moles of solvent per liter of solute."
+],
+a:0,
+e:"Concentration describes the amount of solute in a given quantity of solvent or solution."
+},
+{
+n:4,part:"Part I — Multiple Choice",type:"mcq",
+q:"Molarity is:",
+o:[
+"A. Mol of solute/kg of solvent.",
+"B. Mass of solute/mass of total solution.",
+"C. Mol of reagent/kg of titrant solution.",
+"D. Moles of solute/liters of solution."
+],
+a:3,
+e:"Molarity (M) = moles of solute / liters of solution."
+},
+{
+n:5,part:"Part I — Multiple Choice",type:"mcq",
+q:"Molality is:",
+o:[
+"A. Mol of solute/L of solution.",
+"B. Mol of solute/kg of solvent.",
+"C. Mmol of solute/mL of solution.",
+"D. Mol of reagent/kg of titrant solution."
+],
+a:1,
+e:"Molality (m) = moles of solute / kilograms of solvent."
+},
+{
+n:6,part:"Part I — Multiple Choice",type:"mcq",
+q:"Weight percent is:",
+o:[
+"A. (Mass of solute / mass of total solution or mixture) × 100",
+"B. (Mass of solute / mass of solvent) × 100",
+"C. (Volume of solute / volume of total solution or mixture) × 100",
+"D. (Mol of solute / kg of solvent) × 100"
+],
+a:0,
+e:"Weight percent uses the mass of the solute divided by the total mass of the solution or mixture, multiplied by 100."
+},
+{
+n:7,part:"Part I — Multiple Choice",type:"mcq",
+q:"Volume percent is:",
+o:[
+"A. (Volume of solvent / volume of total solution or mixture) × 100",
+"B. (Mass of solute / volume of total solution or mixture) × 100",
+"C. (Volume of solute / volume of total solution or mixture) × 100",
+"D. (Volume of solute / volume of solvent) × 100"
+],
+a:2,
+e:"Volume percent = (volume of solute / total solution volume) × 100."
+},
+{
+n:8,part:"Part I — Multiple Choice",type:"mcq",
+q:"Specific gravity is:",
+o:[
+"A. Mass/volume.",
+"B. Density of water at 4°C/density of a substance.",
+"C. Mass of solute/total mass of solution.",
+"D. Density of a substance/density of water at 4°C."
+],
+a:3,
+e:"Specific gravity = density of a substance / density of water at 4°C."
+},
+{
+n:9,part:"Part I — Multiple Choice",type:"mcq",
+q:"Parts per million is:",
+o:[
+"A. (Mass of solute / total mass of solution) × 10⁹",
+"B. (Mass of solute / total mass of solution) × 10⁶",
+"C. Mol of solute/kg of solvent.",
+"D. (Mass of solute / mass of solvent) × 100"
+],
+a:1,
+e:"ppm is the mass fraction multiplied by 10⁶."
+},
+{
+n:10,part:"Part I — Multiple Choice",type:"mcq",
+q:"Parts per billion is:",
+o:[
+"A. (Mass of solute / total mass of solution) × 10⁹",
+"B. (Mass of solute / total mass of solution) × 10⁶",
+"C. (Mass of solute / total mass of solution) × 100",
+"D. Mol of solute/L of solution."
+],
+a:0,
+e:"ppb is the mass fraction multiplied by 10⁹."
+},
+{
+n:11,part:"Part I — Multiple Choice",type:"mcq",
+q:"Dilution is the procedure for preparing:",
+o:[
+"A. A more concentrated solution from a less concentrated solution.",
+"B. An insoluble form from analyte.",
+"C. A standard reagent by weighing a final product.",
+"D. A less concentrated solution from a more concentrated solution."
+],
+a:3,
+e:"Dilution prepares a less concentrated solution from a more concentrated solution."
+},
+{
+n:12,part:"Part I — Multiple Choice",type:"mcq",
+q:"Chemical analysis based on weighing a final product is called:",
+o:["A. Volumetric analysis.","B. Standardization.","C. Gravimetric analysis.","D. Back titration."],
+a:2,
+e:"Gravimetric analysis is based on measuring the mass of a final product."
+},
+{
+n:13,part:"Part I — Multiple Choice",type:"mcq",
+q:"Procedures in which we measure the volume of a standard reagent needed to react with analyte are called:",
+o:["A. Gravimetric analysis.","B. Volumetric analysis.","C. Gravimetric titration.","D. Dilution."],
+a:1,
+e:"Volumetric analysis measures the volume of standard reagent required to react with the analyte."
+},
+{
+n:14,part:"Part I — Multiple Choice",type:"mcq",
+q:"A standard reagent is one whose:",
+o:["A. Concentration is known.","B. Concentration is unknown.","C. End point is clearer than the end point of the direct titration.","D. Mass is measured instead of the volume."],
+a:0,
+e:"A standard reagent has a known concentration."
+},
+{
+n:15,part:"Part I — Multiple Choice",type:"mcq",
+q:"In a titration, the solution of accurately known concentration is the:",
+o:["A. Solvent.","B. Analyte.","C. Indicator.","D. Titrant."],
+a:3,
+e:"The titrant is the solution of accurately known concentration."
+},
+{
+n:16,part:"Part I — Multiple Choice",type:"mcq",
+q:"The point at which the reaction is complete is the:",
+o:["A. End point.","B. Blank titration.","C. Equivalence point.","D. Titration error."],
+a:2,
+e:"The equivalence point is the point at which the reaction is complete."
+},
+{
+n:17,part:"Part I — Multiple Choice",type:"mcq",
+q:"The end point is marked by:",
+o:[
+"A. A sudden change in a physical property of the solution.",
+"B. The number of moles of solute per liter of solution.",
+"C. A known excess of one standard reagent.",
+"D. Weighing a final product."
+],
+a:0,
+e:"The end point is detected by a sudden change in a physical property of the solution."
+},
+{
+n:18,part:"Part I — Multiple Choice",type:"mcq",
+q:"An indicator is:",
+o:[
+"A. A reagent whose concentration is unknown.",
+"B. A substance having a physical property, usually color, that changes abruptly near the equivalence point of a chemical reaction.",
+"C. A solution containing reagents except analyte.",
+"D. A homogeneous mixture of two or more pure substances."
+],
+a:1,
+e:"An indicator has a physical property, usually color, that changes abruptly near the equivalence point."
+},
+{
+n:19,part:"Part I — Multiple Choice",type:"mcq",
+q:"Titration error is the difference between:",
+o:[
+"A. Moles of solute before dilution and moles of solute after dilution.",
+"B. Mass of solution and mass of solvent.",
+"C. The concentration of titrant and the concentration of analyte.",
+"D. The observed end point and the true equivalence point."
+],
+a:3,
+e:"Titration error is the difference between the observed end point and the true equivalence point."
+},
+{
+n:20,part:"Part I — Multiple Choice",type:"mcq",
+q:"In a blank titration:",
+o:[
+"A. A known excess of one standard reagent is added to react with analyte.",
+"B. The mass of titrant is measured instead of the volume.",
+"C. A solution containing reagents except analyte is titrated.",
+"D. The analyte is treated with titrant."
+],
+a:2,
+e:"A blank titration uses a solution containing the reagents except the analyte."
+},
+{
+n:21,part:"Part I — Multiple Choice",type:"mcq",
+q:"A primary standard is a reagent that is:",
+o:[
+"A. Pure enough, 99.9% or better, and stable enough to be used directly after weighing.",
+"B. Present in greatest abundance.",
+"C. Added gradually to another solution of accurately known concentration.",
+"D. Titrated without reagents."
+],
+a:0,
+e:"A primary standard must be at least 99.9% pure and sufficiently stable to be used directly after weighing."
+},
+{
+n:22,part:"Part I — Multiple Choice",type:"mcq",
+q:"Standardization is the process of:",
+o:[
+"A. Preparing a less concentrated solution from a more concentrated solution.",
+"B. Determining the concentration of a reagent by reaction with a known quantity of a second reagent.",
+"C. Measuring the mass of titrant instead of the volume.",
+"D. Weighing an insoluble final product."
+],
+a:1,
+e:"Standardization determines reagent concentration by reaction with a known quantity of a second reagent."
+},
+{
+n:23,part:"Part I — Multiple Choice",type:"mcq",
+q:"In a back titration:",
+o:[
+"A. The analyte is treated with titrant and the volume required for complete reaction is measured.",
+"B. A solution containing reagents except analyte is titrated.",
+"C. The mass of titrant is measured instead of the volume.",
+"D. A known excess of one standard reagent is added to react with analyte; the excess reagent is titrated with a second standard reagent."
+],
+a:3,
+e:"In back titration, a known excess of the first standard reagent reacts with analyte, and the remaining excess is titrated with a second standard reagent."
+},
+{
+n:24,part:"Part I — Multiple Choice",type:"mcq",
+q:"In gravimetric titration, titrant concentration is expressed as:",
+o:[
+"A. Mol of solute/kg of solvent.",
+"B. Moles of solute/liters of solution.",
+"C. Mol of reagent/kg of titrant solution.",
+"D. Mass of solute/total mass of solution."
+],
+a:2,
+e:"Gravimetric titration expresses titrant concentration as mol of reagent per kg of titrant solution."
+},
+
+/* =========================
+   PART II — TRUE OR FALSE
+   QUESTIONS 25–36
+========================= */
+
+{
+n:25,part:"Part II — True or False",type:"tf",
+q:"Since volume is temperature-dependent, molarity can change with temperature.",
+o:["True","False"],a:0,
+e:"True. Molarity depends on solution volume, and volume can change with temperature."
+},
+{
+n:26,part:"Part II — True or False",type:"tf",
+q:"Since both moles and mass do not change with temperature, molality is temperature-dependent.",
+o:["True","False"],a:1,
+e:"False. Molality is NOT temperature-dependent because it depends on moles of solute and mass of solvent, which do not change with temperature."
+},
+{
+n:27,part:"Part II — True or False",type:"tf",
+q:"Density = mass/volume.",
+o:["True","False"],a:0,
+e:"True. Density is defined as mass divided by volume."
+},
+{
+n:28,part:"Part II — True or False",type:"tf",
+q:"The density of water at 4°C is close to 1 g/mL, so specific gravity is nearly the same as density.",
+o:["True","False"],a:0,
+e:"True. Because the density of water at 4°C is approximately 1 g/mL, specific gravity is numerically close to density in g/mL."
+},
+{
+n:29,part:"Part II — True or False",type:"tf",
+q:"Moles of solute before dilution = moles of solute after dilution.",
+o:["True","False"],a:0,
+e:"True. Dilution changes the solution volume and concentration, but the amount of solute remains constant."
+},
+{
+n:30,part:"Part II — True or False",type:"tf",
+q:"The volume of titrant needed in the blank titration should be added to the volume needed to titrate unknown.",
+o:["True","False"],a:1,
+e:"False. The blank titration volume should be SUBTRACTED from the volume needed to titrate the unknown."
+},
+{
+n:31,part:"Part II — True or False",type:"tf",
+q:"A primary standard should decompose under ordinary storage.",
+o:["True","False"],a:1,
+e:"False. A primary standard should NOT decompose under ordinary storage."
+},
+{
+n:32,part:"Part II — True or False",type:"tf",
+q:"A primary standard should be stable when dried by heat or vacuum.",
+o:["True","False"],a:0,
+e:"True. A primary standard should remain stable when dried by heat or vacuum."
+},
+{
+n:33,part:"Part II — True or False",type:"tf",
+q:"KHP: A primary standard base. Na₂CO₃: A primary standard acid.",
+o:["True","False"],a:1,
+e:"False. KHP is a primary standard ACID, while Na₂CO₃ is a primary standard BASE."
+},
+{
+n:34,part:"Part II — True or False",type:"tf",
+q:"Na₂C₂O₄, sodium oxalate, is a commercially available primary standard for generating oxalic acid to standardize permanganate solution.",
+o:["True","False"],a:0,
+e:"True. Sodium oxalate is a primary standard used in standardizing permanganate solution."
+},
+{
+n:35,part:"Part II — True or False",type:"tf",
+q:"A back titration is useful when its end point is clearer than the end point of the direct titration.",
+o:["True","False"],a:0,
+e:"True. Back titration is useful when it provides a clearer end point than direct titration."
+},
+{
+n:36,part:"Part II — True or False",type:"tf",
+q:"Gravimetric titration can be more accurate and precise than volumetric titrations.",
+o:["True","False"],a:0,
+e:"True. Gravimetric titration can provide greater accuracy and precision than volumetric titrations."
+},
+
+/* =========================
+   PART III — MATCHING
+   QUESTIONS 37–45
+========================= */
+
+{
+n:37,part:"Part III — Matching: Fundamental SI Units",type:"match",
+q:"Match the quantity with its SI unit: Length.",
+o:[
+"A — mole (mol)","B — second (s)","C — steradian (sr)",
+"D — ampere (A)","E — meter (m)","F — candela (cd)",
+"G — radian (rad)","H — kilogram (kg)","I — kelvin (K)"
+],
+a:4,e:"Length is measured in meters (m)."
+},
+{
+n:38,part:"Part III — Matching: Fundamental SI Units",type:"match",
+q:"Match the quantity with its SI unit: Mass.",
+o:[
+"A — mole (mol)","B — second (s)","C — steradian (sr)",
+"D — ampere (A)","E — meter (m)","F — candela (cd)",
+"G — radian (rad)","H — kilogram (kg)","I — kelvin (K)"
+],
+a:7,e:"Mass is measured in kilograms (kg)."
+},
+{
+n:39,part:"Part III — Matching: Fundamental SI Units",type:"match",
+q:"Match the quantity with its SI unit: Time.",
+o:[
+"A — mole (mol)","B — second (s)","C — steradian (sr)",
+"D — ampere (A)","E — meter (m)","F — candela (cd)",
+"G — radian (rad)","H — kilogram (kg)","I — kelvin (K)"
+],
+a:1,e:"Time is measured in seconds (s)."
+},
+{
+n:40,part:"Part III — Matching: Fundamental SI Units",type:"match",
+q:"Match the quantity with its SI unit: Electric current.",
+o:[
+"A — mole (mol)","B — second (s)","C — steradian (sr)",
+"D — ampere (A)","E — meter (m)","F — candela (cd)",
+"G — radian (rad)","H — kilogram (kg)","I — kelvin (K)"
+],
+a:3,e:"Electric current is measured in amperes (A)."
+},
+{
+n:41,part:"Part III — Matching: Fundamental SI Units",type:"match",
+q:"Match the quantity with its SI unit: Temperature.",
+o:[
+"A — mole (mol)","B — second (s)","C — steradian (sr)",
+"D — ampere (A)","E — meter (m)","F — candela (cd)",
+"G — radian (rad)","H — kilogram (kg)","I — kelvin (K)"
+],
+a:8,e:"Temperature is measured in kelvins (K)."
+},
+{
+n:42,part:"Part III — Matching: Fundamental SI Units",type:"match",
+q:"Match the quantity with its SI unit: Luminous intensity.",
+o:[
+"A — mole (mol)","B — second (s)","C — steradian (sr)",
+"D — ampere (A)","E — meter (m)","F — candela (cd)",
+"G — radian (rad)","H — kilogram (kg)","I — kelvin (K)"
+],
+a:5,e:"Luminous intensity is measured in candela (cd)."
+},
+{
+n:43,part:"Part III — Matching: Fundamental SI Units",type:"match",
+q:"Match the quantity with its SI unit: Amount of substance.",
+o:[
+"A — mole (mol)","B — second (s)","C — steradian (sr)",
+"D — ampere (A)","E — meter (m)","F — candela (cd)",
+"G — radian (rad)","H — kilogram (kg)","I — kelvin (K)"
+],
+a:0,e:"Amount of substance is measured in moles (mol)."
+},
+{
+n:44,part:"Part III — Matching: Fundamental SI Units",type:"match",
+q:"Match the quantity with its SI unit: Plane angle.",
+o:[
+"A — mole (mol)","B — second (s)","C — steradian (sr)",
+"D — ampere (A)","E — meter (m)","F — candela (cd)",
+"G — radian (rad)","H — kilogram (kg)","I — kelvin (K)"
+],
+a:6,e:"Plane angle is measured in radians (rad)."
+},
+{
+n:45,part:"Part III — Matching: Fundamental SI Units",type:"match",
+q:"Match the quantity with its SI unit: Solid angle.",
+o:[
+"A — mole (mol)","B — second (s)","C — steradian (sr)",
+"D — ampere (A)","E — meter (m)","F — candela (cd)",
+"G — radian (rad)","H — kilogram (kg)","I — kelvin (K)"
+],
+a:2,e:"Solid angle is measured in steradians (sr)."
+},
+
+/* =========================
+   PREFIX MATCHING
+   QUESTIONS 46–65
+========================= */
+
+{
+n:46,part:"Part III — Matching: SI Prefixes",type:"match",
+q:"Match the prefix: yotta.",
+o:["A — μ, 10⁻⁶","B — T, 10¹²","C — z, 10⁻²¹","D — k, 10³","E — Y, 10²⁴","F — n, 10⁻⁹","G — da, 10¹","H — P, 10¹⁵","I — c, 10⁻²","J — a, 10⁻¹⁸","K — M, 10⁶","L — y, 10⁻²⁴","M — h, 10²","N — E, 10¹⁸","O — p, 10⁻¹²","P — d, 10⁻¹","Q — Z, 10²¹","R — f, 10⁻¹⁵","S — G, 10⁹","T — m, 10⁻³"],
+a:4,e:"Yotta (Y) represents a factor of 10²⁴."
+},
+{
+n:47,part:"Part III — Matching: SI Prefixes",type:"match",
+q:"Match the prefix: zetta.",
+o:["A — μ, 10⁻⁶","B — T, 10¹²","C — z, 10⁻²¹","D — k, 10³","E — Y, 10²⁴","F — n, 10⁻⁹","G — da, 10¹","H — P, 10¹⁵","I — c, 10⁻²","J — a, 10⁻¹⁸","K — M, 10⁶","L — y, 10⁻²⁴","M — h, 10²","N — E, 10¹⁸","O — p, 10⁻¹²","P — d, 10⁻¹","Q — Z, 10²¹","R — f, 10⁻¹⁵","S — G, 10⁹","T — m, 10⁻³"],
+a:16,e:"Zetta (Z) represents a factor of 10²¹."
+},
+{
+n:48,part:"Part III — Matching: SI Prefixes",type:"match",
+q:"Match the prefix: exa.",
+o:["A — μ, 10⁻⁶","B — T, 10¹²","C — z, 10⁻²¹","D — k, 10³","E — Y, 10²⁴","F — n, 10⁻⁹","G — da, 10¹","H — P, 10¹⁵","I — c, 10⁻²","J — a, 10⁻¹⁸","K — M, 10⁶","L — y, 10⁻²⁴","M — h, 10²","N — E, 10¹⁸","O — p, 10⁻¹²","P — d, 10⁻¹","Q — Z, 10²¹","R — f, 10⁻¹⁵","S — G, 10⁹","T — m, 10⁻³"],
+a:13,e:"Exa (E) represents a factor of 10¹⁸."
+},
+{
+n:49,part:"Part III — Matching: SI Prefixes",type:"match",
+q:"Match the prefix: peta.",
+o:["A — μ, 10⁻⁶","B — T, 10¹²","C — z, 10⁻²¹","D — k, 10³","E — Y, 10²⁴","F — n, 10⁻⁹","G — da, 10¹","H — P, 10¹⁵","I — c, 10⁻²","J — a, 10⁻¹⁸","K — M, 10⁶","L — y, 10⁻²⁴","M — h, 10²","N — E, 10¹⁸","O — p, 10⁻¹²","P — d, 10⁻¹","Q — Z, 10²¹","R — f, 10⁻¹⁵","S — G, 10⁹","T — m, 10⁻³"],
+a:7,e:"Peta (P) represents a factor of 10¹⁵."
+},
+{
+n:50,part:"Part III — Matching: SI Prefixes",type:"match",
+q:"Match the prefix: tera.",
+o:["A — μ, 10⁻⁶","B — T, 10¹²","C — z, 10⁻²¹","D — k, 10³","E — Y, 10²⁴","F — n, 10⁻⁹","G — da, 10¹","H — P, 10¹⁵","I — c, 10⁻²","J — a, 10⁻¹⁸","K — M, 10⁶","L — y, 10⁻²⁴","M — h, 10²","N — E, 10¹⁸","O — p, 10⁻¹²","P — d, 10⁻¹","Q — Z, 10²¹","R — f, 10⁻¹⁵","S — G, 10⁹","T — m, 10⁻³"],
+a:1,e:"Tera (T) represents a factor of 10¹²."
+},
+{
+n:51,part:"Part III — Matching: SI Prefixes",type:"match",
+q:"Match the prefix: giga.",
+o:["A — μ, 10⁻⁶","B — T, 10¹²","C — z, 10⁻²¹","D — k, 10³","E — Y, 10²⁴","F — n, 10⁻⁹","G — da, 10¹","H — P, 10¹⁵","I — c, 10⁻²","J — a, 10⁻¹⁸","K — M, 10⁶","L — y, 10⁻²⁴","M — h, 10²","N — E, 10¹⁸","O — p, 10⁻¹²","P — d, 10⁻¹","Q — Z, 10²¹","R — f, 10⁻¹⁵","S — G, 10⁹","T — m, 10⁻³"],
+a:18,e:"Giga (G) represents a factor of 10⁹."
+},
+{
+n:52,part:"Part III — Matching: SI Prefixes",type:"match",
+q:"Match the prefix: mega.",
+o:["A — μ, 10⁻⁶","B — T, 10¹²","C — z, 10⁻²¹","D — k, 10³","E — Y, 10²⁴","F — n, 10⁻⁹","G — da, 10¹","H — P, 10¹⁵","I — c, 10⁻²","J — a, 10⁻¹⁸","K — M, 10⁶","L — y, 10⁻²⁴","M — h, 10²","N — E, 10¹⁸","O — p, 10⁻¹²","P — d, 10⁻¹","Q — Z, 10²¹","R — f, 10⁻¹⁵","S — G, 10⁹","T — m, 10⁻³"],
+a:10,e:"Mega (M) represents a factor of 10⁶."
+},
+{
+n:53,part:"Part III — Matching: SI Prefixes",type:"match",
+q:"Match the prefix: kilo.",
+o:["A — μ, 10⁻⁶","B — T, 10¹²","C — z, 10⁻²¹","D — k, 10³","E — Y, 10²⁴","F — n, 10⁻⁹","G — da, 10¹","H — P, 10¹⁵","I — c, 10⁻²","J — a, 10⁻¹⁸","K — M, 10⁶","L — y, 10⁻²⁴","M — h, 10²","N — E, 10¹⁸","O — p, 10⁻¹²","P — d, 10⁻¹","Q — Z, 10²¹","R — f, 10⁻¹⁵","S — G, 10⁹","T — m, 10⁻³"],
+a:3,e:"Kilo (k) represents a factor of 10³."
+},
+{
+n:54,part:"Part III — Matching: SI Prefixes",type:"match",
+q:"Match the prefix: hecto.",
+o:["A — μ, 10⁻⁶","B — T, 10¹²","C — z, 10⁻²¹","D — k, 10³","E — Y, 10²⁴","F — n, 10⁻⁹","G — da, 10¹","H — P, 10¹⁵","I — c, 10⁻²","J — a, 10⁻¹⁸","K — M, 10⁶","L — y, 10⁻²⁴","M — h, 10²","N — E, 10¹⁸","O — p, 10⁻¹²","P — d, 10⁻¹","Q — Z, 10²¹","R — f, 10⁻¹⁵","S — G, 10⁹","T — m, 10⁻³"],
+a:12,e:"Hecto (h) represents a factor of 10²."
+},
+{
+n:55,part:"Part III — Matching: SI Prefixes",type:"match",
+q:"Match the prefix: deca.",
+o:["A — μ, 10⁻⁶","B — T, 10¹²","C — z, 10⁻²¹","D — k, 10³","E — Y, 10²⁴","F — n, 10⁻⁹","G — da, 10¹","H — P, 10¹⁵","I — c, 10⁻²","J — a, 10⁻¹⁸","K — M, 10⁶","L — y, 10⁻²⁴","M — h, 10²","N — E, 10¹⁸","O — p, 10⁻¹²","P — d, 10⁻¹","Q — Z, 10²¹","R — f, 10⁻¹⁵","S — G, 10⁹","T — m, 10⁻³"],
+a:6,e:"Deca (da) represents a factor of 10¹."
+},
+{
+n:56,part:"Part III — Matching: SI Prefixes",type:"match",
+q:"Match the prefix: deci.",
+o:["A — μ, 10⁻⁶","B — T, 10¹²","C — z, 10⁻²¹","D — k, 10³","E — Y, 10²⁴","F — n, 10⁻⁹","G — da, 10¹","H — P, 10¹⁵","I — c, 10⁻²","J — a, 10⁻¹⁸","K — M, 10⁶","L — y, 10⁻²⁴","M — h, 10²","N — E, 10¹⁸","O — p, 10⁻¹²","P — d, 10⁻¹","Q — Z, 10²¹","R — f, 10⁻¹⁵","S — G, 10⁹","T — m, 10⁻³"],
+a:15,e:"Deci (d) represents a factor of 10⁻¹."
+},
+{
+n:57,part:"Part III — Matching: SI Prefixes",type:"match",
+q:"Match the prefix: centi.",
+o:["A — μ, 10⁻⁶","B — T, 10¹²","C — z, 10⁻²¹","D — k, 10³","E — Y, 10²⁴","F — n, 10⁻⁹","G — da, 10¹","H — P, 10¹⁵","I — c, 10⁻²","J — a, 10⁻¹⁸","K — M, 10⁶","L — y, 10⁻²⁴","M — h, 10²","N — E, 10¹⁸","O — p, 10⁻¹²","P — d, 10⁻¹","Q — Z, 10²¹","R — f, 10⁻¹⁵","S — G, 10⁹","T — m, 10⁻³"],
+a:8,e:"Centi (c) represents a factor of 10⁻²."
+},
+{
+n:58,part:"Part III — Matching: SI Prefixes",type:"match",
+q:"Match the prefix: milli.",
+o:["A — μ, 10⁻⁶","B — T, 10¹²","C — z, 10⁻²¹","D — k, 10³","E — Y, 10²⁴","F — n, 10⁻⁹","G — da, 10¹","H — P, 10¹⁵","I — c, 10⁻²","J — a, 10⁻¹⁸","K — M, 10⁶","L — y, 10⁻²⁴","M — h, 10²","N — E, 10¹⁸","O — p, 10⁻¹²","P — d, 10⁻¹","Q — Z, 10²¹","R — f, 10⁻¹⁵","S — G, 10⁹","T — m, 10⁻³"],
+a:19,e:"Milli (m) represents a factor of 10⁻³."
+},
+{
+n:59,part:"Part III — Matching: SI Prefixes",type:"match",
+q:"Match the prefix: micro.",
+o:["A — μ, 10⁻⁶","B — T, 10¹²","C — z, 10⁻²¹","D — k, 10³","E — Y, 10²⁴","F — n, 10⁻⁹","G — da, 10¹","H — P, 10¹⁵","I — c, 10⁻²","J — a, 10⁻¹⁸","K — M, 10⁶","L — y, 10⁻²⁴","M — h, 10²","N — E, 10¹⁸","O — p, 10⁻¹²","P — d, 10⁻¹","Q — Z, 10²¹","R — f, 10⁻¹⁵","S — G, 10⁹","T — m, 10⁻³"],
+a:0,e:"Micro (μ) represents a factor of 10⁻⁶."
+},
+{
+n:60,part:"Part III — Matching: SI Prefixes",type:"match",
+q:"Match the prefix: nano.",
+o:["A — μ, 10⁻⁶","B — T, 10¹²","C — z, 10⁻²¹","D — k, 10³","E — Y, 10²⁴","F — n, 10⁻⁹","G — da, 10¹","H — P, 10¹⁵","I — c, 10⁻²","J — a, 10⁻¹⁸","K — M, 10⁶","L — y, 10⁻²⁴","M — h, 10²","N — E, 10¹⁸","O — p, 10⁻¹²","P — d, 10⁻¹","Q — Z, 10²¹","R — f, 10⁻¹⁵","S — G, 10⁹","T — m, 10⁻³"],
+a:5,e:"Nano (n) represents a factor of 10⁻⁹."
+}
+
+/* =========================
+   PART III — SI PREFIXES
+   QUESTIONS 61–65
+========================= */
+
+,{
+n:61,part:"Part III — Matching: SI Prefixes",type:"text",
+q:"Match the prefix: pico. Enter the correct choice letter.",
+a:["O"],e:"Pico (p) represents 10⁻¹²."
+},
+{
+n:62,part:"Part III — Matching: SI Prefixes",type:"text",
+q:"Match the prefix: femto. Enter the correct choice letter.",
+a:["R"],e:"Femto (f) represents 10⁻¹⁵."
+},
+{
+n:63,part:"Part III — Matching: SI Prefixes",type:"text",
+q:"Match the prefix: atto. Enter the correct choice letter.",
+a:["J"],e:"Atto (a) represents 10⁻¹⁸."
+},
+{
+n:64,part:"Part III — Matching: SI Prefixes",type:"text",
+q:"Match the prefix: zepto. Enter the correct choice letter.",
+a:["C"],e:"Zepto (z) represents 10⁻²¹."
+},
+{
+n:65,part:"Part III — Matching: SI Prefixes",type:"text",
+q:"Match the prefix: yocto. Enter the correct choice letter.",
+a:["L"],e:"Yocto (y) represents 10⁻²⁴."
+},
+
+/* =========================
+   CONVERTING BETWEEN UNITS
+   QUESTIONS 66–84
+========================= */
+
+{
+n:66,part:"Part III — Matching: Unit Conversions",type:"text",
+q:"Match liter (L) with its SI equivalent. Enter the choice letter.",
+a:["K"],e:"1 L = 10⁻³ m³."
+},
+{
+n:67,part:"Part III — Matching: Unit Conversions",type:"text",
+q:"Match milliliter (mL) with its SI equivalent. Enter the choice letter.",
+a:["B"],e:"1 mL = 10⁻⁶ m³."
+},
+{
+n:68,part:"Part III — Matching: Unit Conversions",type:"text",
+q:"Match angstrom (Å) with its SI equivalent. Enter the choice letter.",
+a:["P"],e:"1 Å = 10⁻¹⁰ m."
+},
+{
+n:69,part:"Part III — Matching: Unit Conversions",type:"text",
+q:"Match inch (in.) with its SI equivalent. Enter the choice letter.",
+a:["H"],e:"1 inch = 0.0254 m."
+},
+{
+n:70,part:"Part III — Matching: Unit Conversions",type:"text",
+q:"Match pound (lb) with its SI equivalent. Enter the choice letter.",
+a:["D"],e:"1 lb = 0.45359237 kg."
+},
+{
+n:71,part:"Part III — Matching: Unit Conversions",type:"text",
+q:"Match metric ton with its SI equivalent. Enter the choice letter.",
+a:["N"],e:"1 metric ton = 1000 kg."
+},
+{
+n:72,part:"Part III — Matching: Unit Conversions",type:"text",
+q:"Match dyne (dyn) with its SI equivalent. Enter the choice letter.",
+a:["R"],e:"1 dyn = 10⁻⁵ N."
+},
+{
+n:73,part:"Part III — Matching: Unit Conversions",type:"text",
+q:"Match bar with its SI equivalent. Enter the choice letter.",
+a:["F"],e:"1 bar = 10⁵ Pa."
+},
+{
+n:74,part:"Part III — Matching: Unit Conversions",type:"text",
+q:"Match atmosphere (atm) with its SI equivalent. Enter the choice letter.",
+a:["S"],e:"1 atm = 101325 Pa."
+},
+{
+n:75,part:"Part III — Matching: Unit Conversions",type:"text",
+q:"Match torr (Torr) with its SI equivalent. Enter the choice letter.",
+a:["J"],e:"1 Torr = 133.322 Pa."
+},
+{
+n:76,part:"Part III — Matching: Unit Conversions",type:"text",
+q:"Match pound/in.² (psi) with its SI equivalent. Enter the choice letter.",
+a:["Q"],e:"1 psi = 6894.76 Pa."
+},
+{
+n:77,part:"Part III — Matching: Unit Conversions",type:"text",
+q:"Match erg with its SI equivalent. Enter the choice letter.",
+a:["L"],e:"1 erg = 10⁻⁷ J."
+},
+{
+n:78,part:"Part III — Matching: Unit Conversions",type:"text",
+q:"Match electron volt (eV) with its SI equivalent. Enter the choice letter.",
+a:["G"],e:"1 eV = 1.60217653 × 10⁻¹⁹ J."
+},
+{
+n:79,part:"Part III — Matching: Unit Conversions",type:"text",
+q:"Match thermochemical calorie (cal) with its SI equivalent. Enter the choice letter.",
+a:["A"],e:"1 cal = 4.184 J."
+},
+{
+n:80,part:"Part III — Matching: Unit Conversions",type:"text",
+q:"Match Calorie (with a capital C), Cal, with its SI equivalent. Enter the choice letter.",
+a:["I"],e:"1 Cal = 1000 cal = 4.184 kJ."
+},
+{
+n:81,part:"Part III — Matching: Unit Conversions",type:"text",
+q:"Match British thermal unit (Btu) with its SI equivalent. Enter the choice letter.",
+a:["O"],e:"1 Btu = 1055.06 J."
+},
+{
+n:82,part:"Part III — Matching: Unit Conversions",type:"text",
+q:"Match horsepower with its SI equivalent. Enter the choice letter.",
+a:["C"],e:"1 horsepower = 745.700 W."
+},
+{
+n:83,part:"Part III — Matching: Unit Conversions",type:"text",
+q:"Match centigrade (= Celsius), °C, with its SI equivalent. Enter the choice letter.",
+a:["E"],e:"°C = K − 273.15."
+},
+{
+n:84,part:"Part III — Matching: Unit Conversions",type:"text",
+q:"Match Fahrenheit (°F) with its SI equivalent. Enter the choice letter.",
+a:["M"],e:"°F = 1.8(K − 273.15) + 32."
+},
+
+/* =========================
+   PART IV — CALCULATIONS
+   QUESTIONS 85–105
+========================= */
+
+{
+n:85,part:"Part IV — Calculations",type:"text",
+q:"The speed of sound in air is about 343 m/s. What is this speed in miles per hour?\n\nUse: 1 mi = 1609 m; 1 min = 60 s; 1 hour = 60 min.\n\nEnter your numerical answer with units.",
+a:["767"],
+e:"Calculation:\n343 m/s × (1 mi / 1609 m) × (60 s / 1 min) × (60 min / 1 hour)\n= 767 mi/hour."
+},
+{
+n:86,part:"Part IV — Calculations",type:"text",
+q:"An aqueous solution of HCl (36.5 g/mol) contains 36.0% HCl by mass and has a density of 1.10 g/mL. Calculate BOTH:\n(a) Molarity of HCl.\n(b) Molality of HCl.\n\nEnter both numerical answers.",
+a:["10.8","15.4"],
+e:"For 100 g solution:\nn(HCl) = 36.0 / 36.5 = 0.986 mol.\nV(solution) = 100 / 1.10 = 90.9 mL = 0.0909 L.\nM = 0.986 / 0.0909 = 10.8 mol/L.\nMass of solvent = 100 − 36.0 = 64.0 g = 0.0640 kg.\nm = 0.986 / 0.0640 = 15.4 mol/kg."
+},
+{
+n:87,part:"Part IV — Calculations",type:"text",
+q:"How many grams of CuSO₄·5H₂O (249.68 g/mol) should be dissolved in a volume of 500.0 mL to make 8.00 mM Cu²⁺?",
+a:["0.999"],
+e:"n = 8.00 × 10⁻³ mol/L × 0.5000 L.\nMass = 8.00 × 10⁻³ × 0.5000 × 249.68.\nAnswer = 0.999 g."
+},
+{
+n:88,part:"Part IV — Calculations",type:"text",
+q:"How would you prepare 60.0 mL of 0.200 M HNO₃ from a stock solution of 4.00 M HNO₃?\n\nEnter the volume of stock solution required.",
+a:["3.00"],
+e:"Use the dilution equation:\nMiVi = MfVf\nVi = (0.200 × 60.0) / 4.00\nVi = 3.00 mL.\nUse 3.00 mL of stock solution and dilute to a final volume of 60.0 mL."
+},
+{
+n:89,part:"Part IV — Calculations",type:"text",
+q:"Each tablet provides approximately 15 mg of Fe (55.845 g/mol). How many tablets should be analyzed to provide 0.25 g of Fe₂O₃ (159.69 g/mol) product?",
+a:["12"],
+e:"Mass of Fe required:\n0.25 × [2(55.845) / 159.69] = 0.1749 g Fe.\nNumber of tablets = 0.1749 / 0.015 = 11.7.\nRound up to a whole tablet: 12 tablets."
+},
+{
+n:90,part:"Part IV — Calculations",type:"text",
+q:"What mass of 3.0 wt% H₂O₂ (34.01 g/mol) solution is required to provide a 50% excess of reagent for reaction (1-5) with 12 dietary iron tablets?\n\nEach tablet provides approximately 15 mg Fe (55.845 g/mol).\n\n2Fe²⁺ + H₂O₂ + 2H⁺ → 2Fe³⁺ + 2H₂O\n\nEnter the mass of solution in grams.",
+a:["2.7"],
+e:"n(Fe²⁺) = [12 × 0.015] / 55.845.\nn(H₂O₂) = (1/2) × n(Fe²⁺) × 1.5.\nMass of solution = [(1/2 × 12 × 0.015 / 55.845) × 1.5 × 34.01] / 0.030.\nAnswer = 2.7 g H₂O₂ solution."
+},
+{
+n:91,part:"Part IV — Calculations",type:"text",
+q:"A 0.5662-g sample of an ionic compound containing an unknown metal is dissolved in water and treated with excess AgNO₃. If 1.0882 g of AgCl (143.4 g/mol) precipitate forms, calculate the percent by mass of Cl (35.45 g/mol) in the original compound.",
+a:["47.51"],
+e:"n(AgCl) = 1.0882 / 143.4 = 7.589 × 10⁻³ mol.\nn(Cl) = n(AgCl).\nm(Cl) = 7.589 × 10⁻³ × 35.45 = 0.2690 g.\n%Cl = (0.2690 / 0.5662) × 100 = 47.51%."
+},
+{
+n:92,part:"Part IV — Calculations",type:"text",
+q:"You have 505 mL of a 0.150 M HCl solution and want to dilute it to exactly 0.100 M. How much water would you add?",
+a:["252.5"],
+e:"Vf = MiVi / Mf.\nVf = (0.150 × 505) / 0.100 = 757.5 mL.\nWater added = 757.5 − 505 = 252.5 mL."
+},
+{
+n:93,part:"Part IV — Calculations",type:"text",
+q:"A 46.2-mL, 0.568 M calcium nitrate [Ca(NO₃)₂] solution is mixed with 80.5 mL of 1.396 M calcium nitrate solution. Calculate the concentration of the final solution.",
+a:["1.09"],
+e:"Mf = [0.568(46.2) + 1.396(80.5)] / (46.2 + 80.5).\nMf = 1.09 M."
+},
+{
+n:94,part:"Part IV — Calculations",type:"text",
+q:"A solution is prepared by dissolving 23.7 g of CaCl₂ (111.0 g/mol) in 375 g of water. The concentration of CaCl₂ is ____ % by mass.\n\nA. 5.94\nB. 6.32\nC. 0.0632\nD. 0.0594\nE. 6.24\n\nEnter the choice letter.",
+a:["A"],
+e:"Mass percent = [23.7 / (23.7 + 375)] × 100 = 5.94%.\nCorrect choice: A."
+},
+{
+n:95,part:"Part IV — Calculations",type:"text",
+q:"The concentration of nitrate ion in a solution containing 0.900 M aluminum nitrate [Al(NO₃)₃] is ____ M.\n\nA. 0.900\nB. 0.450\nC. 0.300\nD. 2.70\nE. 1.80\n\nEnter the choice letter.",
+a:["D"],
+e:"Each mole of Al(NO₃)₃ produces 3 moles of NO₃⁻.\n[NO₃⁻] = 3 × 0.900 = 2.70 M.\nCorrect choice: D."
+},
+{
+n:96,part:"Part IV — Calculations",type:"text",
+q:"A 100-g sample of mineral water contains 2.50 mg of sodium. Calculate BOTH:\n(a) ppm.\n(b) ppb.\n\nEnter both values.",
+a:["25.0","25000"],
+e:"2.50 mg = 2.50 × 10⁻³ g.\nppm = (2.50 × 10⁻³ / 100) × 10⁶ = 25.0 ppm.\nppb = (2.50 × 10⁻³ / 100) × 10⁹ = 2.50 × 10⁴ ppb."
+},
+{
+n:97,part:"Part IV — Calculations",type:"text",
+q:"The concentration of an aqueous glucose solution (180 g/mol) is 0.500 mol/L and its density is 1.05 g/mL. Calculate the molality.",
+a:["0.521"],
+e:"For 1 L solution:\nMass of solution = 1000 × 1.05 = 1050 g.\nMass of glucose = 0.500 × 180 = 90.0 g.\nMass of water = 1050 − 90.0 = 960 g = 0.960 kg.\nMolality = 0.500 / 0.960 = 0.521 mol/kg."
+},
+{
+n:98,part:"Part IV — Calculations",type:"text",
+q:"The molality of a glucose solution (180 g/mol) in water is 1.00 mol/kg and its density is 1.07 g/mL. Calculate the molarity.",
+a:["0.907"],
+e:"For 1.00 mol glucose and 1.00 kg water:\nMass of solution = 180 + 1000 = 1180 g.\nVolume = 1180 / 1.07 = 1103 mL = 1.103 L.\nMolarity = 1.00 / 1.103 = 0.907 mol/L."
+},
+{
+n:99,part:"Part IV — Calculations",type:"text",
+q:"The concentration of lead nitrate [Pb(NO₃)₂] in a 0.726 M solution is ____ molal. Density = 1.202 g/mL.\n\nA. 0.476\nB. 1.928\nC. 0.755\nD. 0.819\nE. 0.650\n\nEnter the intended choice letter.",
+a:["C"],
+e:"The intended answer is C — 0.755 molal.\nNote: The source does not provide the molar mass of Pb(NO₃)₂, which is required for an independent numerical calculation."
+},
+{
+n:100,part:"Part IV — Calculations",type:"text",
+q:"A solution is prepared by dissolving 23.7 g of CaCl₂ (111 g/mol) in 375 g of water. The density of the resulting solution is 1.05 g/mL. The concentration of Cl⁻ (35.45 g/mol) is ____ M.\n\nA. 0.214\nB. 0.562\nC. 1.12\nD. 1.20\nE. 6.64 × 10⁻²\n\nEnter the choice letter.",
+a:["C"],
+e:"n(Cl⁻) = 2 × (23.7 / 111).\nSolution mass = 23.7 + 375 = 398.7 g.\nSolution volume = 398.7 / 1.05 = 379.7 mL = 0.3797 L.\n[Cl⁻] = [2 × (23.7 / 111)] / 0.3797 = 1.12 M.\nCorrect choice: C."
+},
+{
+n:101,part:"Part IV — Calculations",type:"text",
+q:"The molarity of urea in a solution of 16 g urea (MW = 60.0 g/mol) in 39 g H₂O is ____ M. Density = 1.3 g/mL.\n\nA. 0.11\nB. 3.7\nC. 6.8\nD. 6.3\nE. 0.16\n\nEnter the choice letter.",
+a:["D"],
+e:"n(urea) = 16 / 60.0 mol.\nSolution volume = (16 + 39) / 1.3 = 42.3 mL = 0.0423 L.\nM = (16 / 60.0) / 0.0423 = 6.3 M.\nCorrect choice: D."
+},
+{
+n:102,part:"Part IV — Calculations",type:"text",
+q:"What is the molarity of sodium chloride in a solution that is 13.0% by mass NaCl and has a density of 1.10 g/mL? NaCl = 58.5 g/mol.\n\nA. 143\nB. 2.45\nC. 2.56\nD. 2.23\nE. 1.43 × 10⁻²\n\nEnter the intended choice letter.",
+a:["B"],
+e:"For 1 L solution:\nMass of solution = 1.10 × 1000 = 1100 g.\nMass of NaCl = 0.130 × 1100 = 143 g.\nM = 143 / 58.5 = 2.44 mol/L.\nThe intended matching source choice is B — 2.45 M."
+},
+{
+n:103,part:"Part IV — Calculations",type:"text",
+q:"What mass of K₂CO₃ is needed to prepare 200. mL of a solution having a potassium ion concentration of 0.150 M?\n\nA. 10.4 g\nB. 4.15 g\nC. 13.8 g\nD. 2.07 g\nE. 1.49 g\n\nEnter the intended choice letter.",
+a:["D"],
+e:"n(K⁺) = 0.150 × 0.200 = 0.0300 mol.\nn(K₂CO₃) = 0.0300 / 2 = 0.0150 mol.\nThe intended source answer is D — 2.07 g.\nNote: The source does not supply the molar mass of K₂CO₃."
+},
+{
+n:104,part:"Part IV — Calculations",type:"text",
+q:"The density of a 5.24 M NaHCO₃ (84.0 g/mol) solution is 1.19 g/mL. Its molality is ____.\n\nA. 6.99 m\nB. 7.27 m\nC. 9.97 m\nD. 6.71 m\n\nEnter the choice letter.",
+a:["A"],
+e:"For 1 L solution:\nMass of solution = 1190 g.\nMass of NaHCO₃ = 5.24 × 84.0 = 440.16 g.\nMass of solvent = 1190 − 440.16 = 749.84 g = 0.74984 kg.\nm = 5.24 / 0.74984 = 6.99 mol/kg.\nCorrect choice: A."
+},
+{
+n:105,part:"Part IV — Calculations",type:"text",
+q:"What is the concentration in ppm of a 1.5 × 10⁻³ molal solution of NaCl (58.5 g/mol)?\n\nA. 1.5 ppm\nB. 8.8 ppm\nC. 88 ppm\nD. 150 ppm\n\nEnter the choice letter.",
+a:["C"],
+e:"For 1 kg solvent:\nMass of NaCl = 1.5 × 10⁻³ × 58.5 = 0.08775 g.\nppm = [0.08775 / (1000 + 0.08775)] × 10⁶ = 87.74 ppm.\nRounded answer = 88 ppm.\nCorrect choice: C."
+},
+
+/* =========================
+   PART V — COMPLETION
+   QUESTIONS 106–120
+========================= */
+
+{
+n:106,part:"Part V — Completion and Analysis",type:"text",
+q:"Complete the SI definitions:\n(a) One meter is the distance light travels in a vacuum during ____ of a second.\n(b) One kilogram is the mass of the prototype kilogram kept at ____.\n(c) One second is the duration of ____ periods of the radiation corresponding to a certain atomic transition of ____.\n\nEnter all answers.",
+a:["1/299792458","Sèvres","9192631770","133Cs"],
+e:"(a) 1/299,792,458 of a second.\n(b) Sèvres, France.\n(c) 9,192,631,770 periods; ¹³³Cs."
+},
+{
+n:107,part:"Part V — Completion and Analysis",type:"text",
+q:"Complete the definition of one ampere:\nA force of ____ newtons per meter of length, between two straight, parallel conductors of ____ length and ____ cross section, separated by ____ in a vacuum.\n\nEnter all four answers.",
+a:["2×10-7","infinite","negligible","1 meter"],
+e:"The answers are:\n2 × 10⁻⁷ newtons per meter;\ninfinite length;\nnegligible cross section;\nseparated by 1 meter."
+},
+{
+n:108,part:"Part V — Completion and Analysis",type:"text",
+q:"Complete the temperature definition:\nThe triple point of water occurs when ____, ____, and ____ water are in equilibrium. Its temperature is ____ K, and absolute zero is ____ K.",
+a:["solid","liquid","gaseous","273.16","0"],
+e:"Solid, liquid, and gaseous water are in equilibrium at 273.16 K. Absolute zero is 0 K."
+},
+{
+n:109,part:"Part V — Completion and Analysis",type:"text",
+q:"Complete the definitions:\n(a) Candela is a measure of ____ visible to the human eye.\n(b) One mole is the number of particles equal to the number of atoms in exactly ____ kg of ____, approximately ____.",
+a:["luminous intensity","0.012","12C","6.0221415"],
+e:"(a) Luminous intensity.\n(b) 0.012 kg of ¹²C, approximately 6.0221415 × 10²³ particles."
+},
+{
+n:110,part:"Part V — Completion and Analysis",type:"text",
+q:"Complete:\n(a) There are ____ radians in a circle.\n(b) There are ____ steradians in a sphere.",
+a:["2π","4π"],
+e:"A circle contains 2π radians. A sphere contains 4π steradians."
+},
+{
+n:111,part:"Part V — Completion and Analysis",type:"text",
+q:"Complete the expressions:\n(a) 0.10 M HCl = ____ mol HCl/L = ____ mmol HCl/mL.\n(b) moles = ____ × V(L).\n(c) mmol = ____ × V(mL).\n(d) mass(g) = ____ × molar mass(g/mol).",
+a:["0.10","0.10","M","M","number of moles"],
+e:"(a) 0.10 mol HCl/L = 0.10 mmol HCl/mL.\n(b) moles = M (mol/L) × V(L).\n(c) mmol = M (mmol/mL) × V(mL).\n(d) mass = number of moles × molar mass."
+},
+{
+n:112,part:"Part V — Completion and Analysis",type:"text",
+q:"Complete:\n(a) Since ____ is temperature-dependent, molarity can change with temperature.\n(b) Since both ____ and ____ do not change with temperature, molality is not temperature-dependent.",
+a:["volume","moles","mass"],
+e:"(a) Volume.\n(b) Moles and mass."
+},
+{
+n:113,part:"Part V — Completion and Analysis",type:"text",
+q:"Complete the ppm and ppb expressions:\n(a) 1 ppm = 1 mg solute / ____.\n(b) With solution density approximately 1 g/mL: 1 ppm = 1 mg solute / ____ = 1 μg solute / ____.\n(c) 1 ppb = 1 μg solute / ____.\n(d) With the same density approximation: 1 ppb = 1 μg solute / ____ = 1 ng solute / ____.",
+a:["1 kg solution","1 L solution","1 mL solution","1 kg solution","1 L solution","1 mL solution"],
+e:"(a) 1 kg solution.\n(b) 1 L solution and 1 mL solution.\n(c) 1 kg solution.\n(d) 1 L solution and 1 mL solution.\nThe volume-based expressions require the density approximation."
+},
+{
+n:114,part:"Part V — Completion and Analysis",type:"text",
+q:"Complete the methods of determining end point:\n(a) Detecting a sudden change in the ____ or ____ between a pair of electrodes.\n(b) Monitoring ____ by reactants or products.\n(c) Observing an ____.",
+a:["voltage","current","absorption of light","indicator color change"],
+e:"(a) Voltage or current.\n(b) Absorption of light.\n(c) Indicator color change."
+},
+{
+n:115,part:"Part V — Completion and Analysis",type:"text",
+q:"Complete:\n(a) Equivalence point — the point at which ____.\n(b) End point — is marked by ____.\n(c) Titration error is the difference between ____ and ____.",
+a:["reaction is complete","sudden change in a physical property","observed end point","true equivalence point"],
+e:"(a) The reaction is complete.\n(b) A sudden change in a physical property of the solution.\n(c) The observed end point and the true equivalence point."
+},
+{
+n:116,part:"Part V — Completion and Analysis",type:"text",
+q:"A primary standard is pure enough, ____ or better, and stable enough to be used directly after ____. It should not ____ under ordinary storage, and should be stable when dried by ____ or ____.",
+a:["99.9%","weighing","decompose","heat","vacuum"],
+e:"99.9%; weighing; decompose; heat; vacuum."
+},
+{
+n:117,part:"Part V — Completion and Analysis",type:"text",
+q:"Complete:\n(a) Direct titration: the ____ is treated with ____ and the ____ required for complete reaction is measured.\n(b) Back titration: a known ____ of one standard reagent is added; the excess is titrated with a ____.\n(c) Back titration is useful when its ____ is clearer, or when an ____ of the first reagent is required.",
+a:["analyte","titrant","volume","excess","second standard reagent","end point","excess"],
+e:"(a) Analyte; titrant; volume.\n(b) Excess; second standard reagent.\n(c) End point; excess."
+},
+{
+n:118,part:"Part V — Completion and Analysis",type:"text",
+q:"Complete:\n(a) Analyte → ____ → dry or ignite precipitate → ____.\n(b) Gravimetric titration measures the ____ of titrant instead of the ____.\n(c) Titrant can be delivered from a ____.\n(d) Titrant concentration is expressed as ____.",
+a:["insoluble form","weigh the ppt","mass","volume","pipette","mol of reagent/kg of titrant solution"],
+e:"(a) Insoluble form; weigh the precipitate.\n(b) Mass instead of volume.\n(c) Pipette.\n(d) Mol of reagent/kg of titrant solution."
+},
+{
+n:119,part:"Part V — Completion and Analysis",type:"text",
+q:"Complete:\n(a) Titration error can be estimated with a ____, in which the same procedure is carried out without ____.\n(b) The volume of titrant needed in the blank titration should be ____ from the volume needed to titrate unknown.",
+a:["blank titration","analyte","subtracted"],
+e:"(a) Blank titration; analyte.\n(b) Subtracted."
+},
+{
+n:120,part:"Part V — Completion and Analysis",type:"text",
+q:"Complete the reaction and expressions:\n5H₂C₂O₄ + 2MnO₄⁻ + 6H⁺ → ____ CO₂ + ____ Mn²⁺ + ____ H₂O.\n(a) ____ moles H₂C₂O₄ react with ____ moles MnO₄⁻.\n(b) moles H₂O₂ = ____ × moles Fe²⁺.\n(c) For 50% excess: moles H₂O₂ = ____ × moles Fe²⁺ × ____.",
+a:["10","2","8","5","2","1/2","1/2","1.5"],
+e:"Balanced reaction:\n5H₂C₂O₄ + 2MnO₄⁻ + 6H⁺ → 10CO₂ + 2Mn²⁺ + 8H₂O.\n(a) 5 moles H₂C₂O₄ react with 2 moles MnO₄⁻.\n(b) H₂O₂ = 1/2 × moles Fe²⁺.\n(c) H₂O₂ = 1/2 × moles Fe²⁺ × 1.5."
+}
+
+];
+
+/* =========================
+   EXAM ENGINE
+========================= */
+
+let currentIndex = 0;
+let score = 0;
+let answered = false;
+let userAnswers = [];
+let shuffledQuestions = [];
+
+function startExam(){
+  currentIndex=0;
+  score=0;
+  answered=false;
+  userAnswers=[];
+  shuffledQuestions=[...questions];
+
+  document.getElementById("startScreen").style.display="none";
+  document.getElementById("resultScreen").style.display="none";
+  document.getElementById("examScreen").style.display="block";
+
+  renderQuestion();
+}
+
+function renderQuestion(){
+  const q=shuffledQuestions[currentIndex];
+  answered=false;
+
+  document.getElementById("currentStat").textContent=
+    (currentIndex+1)+" / "+shuffledQuestions.length;
+
+  document.getElementById("scoreStat").textContent=score;
+
+  document.getElementById("percentStat").textContent=
+    Math.round((currentIndex/shuffledQuestions.length)*100)+"%";
+
+  document.getElementById("progressBar").style.width=
+    (currentIndex/shuffledQuestions.length*100)+"%";
+
+  document.getElementById("partLabel").textContent=q.part;
+  document.getElementById("questionLabel").textContent="Question "+q.n;
+  document.getElementById("questionText").textContent=q.q;
+
+  const area=document.getElementById("answerArea");
+  area.innerHTML="";
+
+  if(q.type==="mcq" || q.type==="tf" || q.type==="match"){
+    q.o.forEach((option,index)=>{
+      const label=document.createElement("label");
+      label.className="option";
+      label.innerHTML=
+        `<input type="radio" name="answer" value="${index}">
+         <span>${escapeHTML(option)}</span>`;
+      area.appendChild(label);
+    });
+  }else{
+    const input=document.createElement("textarea");
+    input.id="writtenAnswer";
+    input.className="question-input";
+    input.rows=4;
+    input.placeholder="Enter your answer here...";
+    area.appendChild(input);
+  }
+
+  const feedback=document.getElementById("feedback");
+  feedback.className="feedback";
+  feedback.innerHTML="";
+
+  document.getElementById("submitBtn").disabled=false;
+  document.getElementById("nextBtn").disabled=true;
+  document.getElementById("nextBtn").textContent=
+    currentIndex===shuffledQuestions.length-1
+    ?"Finish Examination"
+    :"Next Question →";
+}
+
+function escapeHTML(value){
+  return String(value).replace(/[&<>"']/g,function(ch){
+    return {
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      '"':"&quot;",
+      "'":"&#039;"
+    }[ch];
+  });
+}
+
+function normalize(value){
+  return String(value)
+    .toLowerCase()
+    .replace(/,/g,"")
+    .replace(/[;:()[\]{}]/g," ")
+    .replace(/\s+/g," ")
+    .trim();
+}
+
+function checkWrittenAnswer(input,answers){
+  const user=normalize(input);
+
+  if(!user)return false;
+
+  return answers.every(answer=>{
+    const expected=normalize(answer);
+    return user.includes(expected);
+  });
+}
+
+function submitAnswer(){
+  if(answered)return;
+
+  const q=shuffledQuestions[currentIndex];
+  let correct=false;
+  let userAnswer="";
+
+  if(q.type==="mcq" || q.type==="tf" || q.type==="match"){
+    const selected=document.querySelector('input[name="answer"]:checked');
+
+    if(!selected){
+      alert("Please select an answer first.");
+      return;
+    }
+
+    const selectedIndex=Number(selected.value);
+    userAnswer=q.o[selectedIndex];
+    correct=selectedIndex===q.a;
+
+    document.querySelectorAll(".option").forEach((option,index)=>{
+      option.classList.add("disabled");
+      const radio=option.querySelector("input");
+      radio.disabled=true;
+
+      if(index===q.a){
+        option.classList.add("correct");
+      }else if(index===selectedIndex && !correct){
+        option.classList.add("wrong");
+      }
+    });
+
+  }else{
+    const input=document.getElementById("writtenAnswer");
+    userAnswer=input.value.trim();
+
+    if(!userAnswer){
+      alert("Please enter your answer first.");
+      return;
+    }
+
+    correct=checkWrittenAnswer(userAnswer,q.a);
+    input.disabled=true;
+  }
+
+  answered=true;
+
+  if(correct)score++;
+
+  userAnswers.push({
+    number:q.n,
+    question:q.q,
+    answer:userAnswer,
+    correct:correct,
+    explanation:q.e,
+    expected:q.a
+  });
+
+  const feedback=document.getElementById("feedback");
+  feedback.className="feedback "+(correct?"correct":"wrong");
+
+  const expectedText=Array.isArray(q.a)
+    ?q.a.join(" / ")
+    :q.o[q.a];
+
+  feedback.innerHTML=correct
+    ?`<strong>✓ Correct Answer!</strong>
+       Excellent work.`
+    :`<strong>✗ Incorrect Answer</strong>
+       <b>Correct answer:</b> ${escapeHTML(expectedText)}
+       <div class="explanation">
+       <b>Explanation / Solution:</b><br>
+       ${escapeHTML(q.e)}
+       </div>`;
+
+  document.getElementById("scoreStat").textContent=score;
+  document.getElementById("submitBtn").disabled=true;
+  document.getElementById("nextBtn").disabled=false;
+}
+
+function nextQuestion(){
+  if(!answered)return;
+
+  if(currentIndex<shuffledQuestions.length-1){
+    currentIndex++;
+    renderQuestion();
+  }else{
+    finishExam();
+  }
+}
+
+function finishExam(){
+  document.getElementById("examScreen").style.display="none";
+  document.getElementById("resultScreen").style.display="block";
+
+  const total=shuffledQuestions.length;
+  const percentage=(score/total)*100;
+
+  document.getElementById("finalScore").textContent=
+    score+" / "+total;
+
+  document.getElementById("finalMessage").textContent=
+    "Your final percentage: "+percentage.toFixed(2)+"%";
+
+  let reviewHTML="<h3>Examination Review</h3>";
+
+  userAnswers.forEach(item=>{
+    reviewHTML+=`
+      <div class="review-item">
+        <b>Question ${item.number}</b>
+        <p>${escapeHTML(item.question)}</p>
+        <p>${item.correct?"✓ Correct":"✗ Incorrect"}</p>
+        ${!item.correct
+          ?`<p><b>Your answer:</b> ${escapeHTML(item.answer)}</p>
+            <p><b>Correct answer:</b> ${escapeHTML(item.expected.join(" / "))}</p>`
+          :""}
+        <p><b>Explanation:</b> ${escapeHTML(item.explanation)}</p>
+      </div>`;
+  });
+
+  document.getElementById("reviewArea").innerHTML=reviewHTML;
+  document.getElementById("progressBar").style.width="100%";
+}
+
+function restartExam(){
+  document.getElementById("resultScreen").style.display="none";
+  document.getElementById("startScreen").style.display="block";
+  document.getElementById("progressBar").style.width="0%";
+}
+</script>
+
+</body>
+</html>
